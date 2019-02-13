@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>公安</title>
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+    <link rel="stylesheet" type="text/css" href="../css/score.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+</head>
+<body>
+@@include('./include/header.html')
+@@include('./include/leftBar2.html')
+<div class="cont">
+    <div class="module cf formCondiSamll">
+        <div class="formCondi">
+            规则名称
+            <input type="text">
+        </div>
+        <div class="formCondi">
+            积分规则类别
+            <select>
+                <option>请选择</option>
+                <option>企业积分规则</option>
+                <option>人员积分规则</option>
+            </select>
+        </div>
+        <div class="formCondi">
+            业务类别
+            <select>
+                <option>请选择</option>
+                <option>业务</option>
+            </select>
+        </div>
+        <div class="formCondi">
+            规则描述
+            <input type="text">
+        </div>
+        <div class="formCondi">
+            积分规则来源
+            <input type="text">
+        </div>
+        <div class="formIcon">
+            <input type="button" value="查询" class="scoreIcon1">
+            <input type="button" value="新增" class="scoreIcon2" onclick="window.location='score_addrule.html'">
+        </div>
+    </div>
+    <div class="moduleTable">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <th>序号</th>
+                <th>规则名称</th>
+                <th>积分规则来源</th>
+                <th>业务分类</th>
+                <th>积分规则类别</th>
+                <th>计算公式</th>
+                <th>积分规则描述</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>人员关系</td>
+                <td>管理员</td>
+                <td>业务</td>
+                <td>企业积分规则</td>
+                <td>涉集资诈骗高管人数×40%+涉集资诈骗高管职位×60%</td>
+                <td>— —</td>
+                <td><a href="score_addrule.html" class="mtIcon1">修改</a> | <a href="#" class="mtIcon2">删除</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>项目关系</td>
+                <td>管理员</td>
+                <td>业务</td>
+                <td>企业积分规则</td>
+                <td>企业曾参与集资诈骗项目次数 ×20%+企业曾参与集资诈骗项目金额×80%</td>
+                <td>— —</td>
+                <td><a href="score_addrule.html" class="mtIcon1">修改</a> | <a href="#" class="mtIcon2">删除</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>舆情信息</td>
+                <td>管理员</td>
+                <td>业务</td>
+                <td>企业积分规则</td>
+                <td>高管集资诈骗舆情负面次数×30%+企业集资诈骗舆情负面次数×70%</td>
+                <td>— —</td>
+                <td><a href="score_addrule.html" class="mtIcon1">修改</a> | <a href="#" class="mtIcon2">删除</a></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>法院诉讼</td>
+                <td>管理员</td>
+                <td>业务</td>
+                <td>企业积分规则</td>
+                <td>企业集资诈骗诉诉讼次数×100% </td>
+                <td>— —</td>
+                <td><a href="score_addrule.html" class="mtIcon1">修改</a> | <a href="#" class="mtIcon2">删除</a></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>资金流向</td>
+                <td>管理员</td>
+                <td>业务</td>
+                <td>企业积分规则</td>
+                <td>企业曾经投资集资诈骗公司金额比例×100% </td>
+                <td>— —</td>
+                <td><a href="score_addrule.html" class="mtIcon1">修改</a> | <a href="#" class="mtIcon2">删除</a></td>
+            </tr>
+        </table>
+        <div class="page">
+            <div class="page_l">共5条数据</div>
+            <div class="page_r">
+                <span>共1页，每页10条</span>
+                <div class="page_rA">
+                    <a href="javascript:void(0)" class="disable">&lt;&lt;</a>
+                    <a href="javascript:void(0)" class="disable">&lt;</a>
+                    <input type="text" value="1">
+                    <a href="javascript:void(0)" class="disable">&gt;</a>
+                    <a href="javascript:void(0)" class="disable">&gt;&gt;</a>
+                </div>
+                <input type="button" value="确定" class="pageIcon">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

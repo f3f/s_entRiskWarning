@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>公安</title>
+	<link rel="stylesheet" type="text/css" href="../css/public.css">
+	<link rel="stylesheet" type="text/css" href="../css/mycharts.css">
+	<script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="../js/public.js"></script>
+</head>
+<body>
+@@include('./include/header.html')
+@@include('./include/leftBar1.html')
+<div class="cont">
+	<div class="module">
+		<div class="moduleTit">集资诈骗企业地域分布</div>
+		<div id="jzzpqydyfb" class='allMain1'></div>
+	</div>
+	<div class="allMain2">
+		<div class="module main2L fl">
+			<div class="moduleTit">集资诈骗企业类型分布</div>
+			<div id="jzzpqylxfb" class='allMain2-left'></div>
+		</div>
+		<div class="module main2R fr">
+			<div class="moduleTit">各区域集资诈骗状态分布</div>
+			<div id="gqyjzzpztfb" class='allMain2-right'>
+
+			</div>
+		</div>
+	</div>
+	<!--<div class="module"  style="margin-top: 20px;">-->
+		<!--<div class="moduleTit">集资诈骗企业地域分布</div>-->
+		<!--<div class='allMain3'>-->
+
+		<!--</div>-->
+	<!--</div>-->
+	<div class="module">
+		<div class="moduleTit">集资诈骗业行业分布和共同行为特征</div>
+		<div class='allMain4'>
+			<div id="hyfbhgttz1"></div>
+			<div id="hyfbhgttz2"></div>
+		</div>
+	</div>
+	<div class="module">
+		<div class="moduleTit">结论</div>
+		<div class='allMain5'>
+			<div class="allMain5top">通过上面的集资诈骗企业共同行为及地域、行业等分析，得到以下企业存在相似集资诈骗的概率：</div>
+			<ul class="conclusion">
+				<li id="conclusion1"></li>
+				<li id="conclusion2"></li>
+				<li id="conclusion3"></li>
+				<li id="conclusion4"></li>
+				<li id="conclusion5"></li>
+				<li id="conclusion6"></li>
+				<li id="conclusion7"></li>
+				<li id="conclusion8"></li>
+				<li id="conclusion9"></li>
+				<li id="conclusion10"></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script src="../js/echarts-all-3.js"></script>
+<script src="../js/echarts-engine.js"></script>
+<script src="../js/china-map.js"></script>
+<!--<script src="../js/nantong.js"></script> 南通市js-->
+<script>
+	$(function(){
+        var jzzpqydyfb = echarts.init(document.getElementById('jzzpqydyfb'));
+
+//        jzzpqydyfb.setOption({
+//            series: [{
+//                type: 'map',
+//                map: 'nantong'
+//            }]
+//        });
+
+        function randomData() {
+            return Math.round(Math.random()*100);
+        }
+        var dataMap = {};
+        function dataFormatter(obj) {
+            //var pList = ['崇川区','港闸区','通州区','海安县','如皋市','如东县','海门市','启东市']; 南通市各区县
+            var pList = ['南京市','无锡市','徐州市','常州市','苏州市','南通市','连云港市','淮安市','盐城市','扬州市','镇江市','泰州市','宿迁市'];
+            var temp;
+            for (var year = 1; year <= 12; year++) {
+                var max = 0;
+                var sum = 0;
+                temp = obj[year];
+                for (var i = 0, l = temp.length; i < l; i++) {
+                    max = Math.max(max, temp[i]);
+                    sum += temp[i];
+                    obj[year][i] = {
+                        name : pList[i],
+                        value : temp[i]
+                    }
+                }
+                obj[year + 'max'] = Math.floor(max / 100) * 100;
+                obj[year + 'sum'] = sum;
+            }
+            return obj;
+        }
+
+        dataMap.dataGDP = dataFormatter({
+            12: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            11: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            10: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            9: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            8: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            7: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            6: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            5: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            4: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            3: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            2: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()],
+            1: [randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData(),randomData()]
+        });
+
+
+
+        option = {
+            baseOption: {
+                timeline: {
+                    axisType: 'category',
+                    autoPlay: true,
+                    playInterval: 5000,
+                    data: ['2016年1月','2016年2月','2016年3月','2016年4月','2016年5月','2016年6月','2016年7月','2016年8月','2016年9月','2016年10月','2016年11月','2016年12月'],
+                    symbolSize: '10',
+                    bottom:'0',
+                    x:'20%',
+                    currentIndex :0,
+                    checkpointStyle: {
+                        symbol: 'circle',
+                        color: '#da1108',
+                        //borderColor: '#F5F603'
+                    }
+                },
+                legend: {
+                    x: 'right',
+                    y:'center',
+                    orient: 'vertical',
+                    //data: ['崇川区','港闸区','通州区','海安县','如皋市','如东县','海门市','启东市'],
+                    itemGap:2,
+                    itemWidth:20,
+                    itemHeight:5,
+                    itemSymbol:'rect'
+                },
+                tooltip: {
+                    trigger: 'item'
+                },
+
+                visualMap: {
+                    min: 0,
+                    max: 100,
+                    x: '10%',
+                    bottom:'20%',
+                    orient: 'vertical',
+                    text: ['高','低'],           // 文本，默认为数值文本
+                    calculable: false,
+                    splitNumber: 8,
+                    itemGap:1,
+                    itemSymbol:'rect',
+                    color:['#f64501','#fffcdb']
+                },
+
+                series: [
+                    {
+                        name: '企业数量',
+                        type: 'map',
+                        //mapType: 'nantong',配置南通市
+                        mapType: 'jiangsu',
+                        roam: true,
+                        // mapLocation:{
+                        //     width:'60%',
+                        //     height:'70%'
+                        // },
+                        label: {
+                            normal: {
+                                show: true
+                            },
+                            emphasis: {
+                                show: true
+                            }
+                        },
+                        left:'20%'
+                    },
+                    {
+                        name: '企业数量',
+                        type: 'pie',
+                        radius: ['40%', '55%'],
+                        center:['85%','50%'],
+                        //avoidLabelOverlap: false,
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'center',
+                            },
+                            emphasis: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '26',
+                                    fontWeight: 'bold',
+									color:"#f00"
+                                },
+                                formatter: '{b}\n{d}%'
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                show: false
+                            }
+                        }
+                    }
+                ]
+            },
+
+
+            options: [
+
+                {
+                    //title : {text: '2014污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['1']},
+                        {data: dataMap.dataGDP['1']}
+                    ]
+                },
+                {
+                    //title : {text: '2015污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['2']},
+                        {data: dataMap.dataGDP['2']}
+                    ]
+                },
+                {
+                    //title : {text: '2016污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['3']},
+                        {data: dataMap.dataGDP['3']}
+                    ]
+                },
+                {
+                    //title : {text: '2014污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['4']},
+                        {data: dataMap.dataGDP['4']}
+                    ]
+                },
+                {
+                    //title : {text: '2015污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['5']},
+                        {data: dataMap.dataGDP['5']}
+                    ]
+                },
+                {
+                    //title : {text: '2016污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['6']},
+                        {data: dataMap.dataGDP['6']}
+                    ]
+                },
+                {
+                    //title : {text: '2014污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['7']},
+                        {data: dataMap.dataGDP['7']}
+                    ]
+                },
+                {
+                    //title : {text: '2015污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['8']},
+                        {data: dataMap.dataGDP['8']}
+                    ]
+                },
+                {
+                    //title : {text: '2016污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['9']},
+                        {data: dataMap.dataGDP['9']}
+                    ]
+                },
+                {
+                    //title : {text: '2014污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['10']},
+                        {data: dataMap.dataGDP['10']}
+                    ]
+                },
+                {
+                    //title : {text: '2015污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['11']},
+                        {data: dataMap.dataGDP['11']}
+                    ]
+                },
+                {
+                    //title : {text: '2016污染源重点企业分布'},
+                    series : [
+                        {data: dataMap.dataGDP['12']},
+                        {data: dataMap.dataGDP['12']}
+                    ]
+                }
+            ]
+        };
+        jzzpqydyfb.setOption(option);
+
+        var jzzpqylxfb = charts.init({id:773,container:"jzzpqylxfb",option:{}});
+        var gqyjzzpztfb = charts.init({id:772,container:"gqyjzzpztfb",option:{}});
+        var conclusion1 = charts.init({id:774,container:"conclusion1",option:{}});
+        var conclusion2 = charts.init({id:774,container:"conclusion2",option:{
+            title: {
+                text: '南通市XXX公司'
+            },
+            series : [
+                {
+                    data:[
+                        {
+                            value:56
+                        },
+                        {
+                            value:44,
+                            itemStyle: {
+                                normal: {
+                                    color: '#ff6c00'
+                                }
+                            }
+                        }
+
+                    ]
+                }
+            ]
+        }});
+        var conclusion3 = charts.init({id:774,container:"conclusion3",option:{
+            title: {
+                text: '南通市XXX公司'
+            },
+            series : [
+                {
+                    data:[
+                        {
+                            value:65
+                        },
+                        {
+                            value:35,
+                            itemStyle: {
+                                normal: {
+                                    color: '#eca32f'
+                                }
+                            }
+                        }
+
+                    ]
+                }
+            ]
+        }});
+        var conclusion4 = charts.init({id:774,container:"conclusion4",option:{
+            title: {
+                text: '南通市XXX公司'
+            },
+            series : [
+                {
+                    data:[
+                        {
+                            value:70
+                        },
+                        {
+                            value:30,
+                            itemStyle: {
+                                normal: {
+                                    color: '#ffb400'
+                                }
+                            }
+                        }
+
+                    ]
+                }
+            ]
+        }});
+        var conclusion5 = charts.init({id:774,container:"conclusion5",option:{
+            title: {
+                text: '南通市XXX公司'
+            },
+            series : [
+                {
+                    data:[
+                        {
+                            value:73
+                        },
+                        {
+                            value:27,
+                            itemStyle: {
+                                normal: {
+                                    color: '#ffd200'
+                                }
+                            }
+                        }
+
+                    ]
+                }
+            ]
+        }});
+        var conclusion6 = charts.init({id:774,container:"conclusion6",option:{
+            title: {
+                text: '南通市XXX公司'
+            },
+            series : [
+                {
+                    data:[
+                        {
+                            value:78
+                        },
+                        {
+                            value:22,
+                            itemStyle: {
+                                normal: {
+                                    color: '#2996ec'
+                                }
+                            }
+                        }
+
+                    ]
+                }
+            ]
+        }});
+        var conclusion7 = charts.init({id:774,container:"conclusion7",option:{
+            title: {
+                text: '南通市XXX公司'
+            },
+            series : [
+                {
+                    data:[
+                        {
+                            value:78
+                        },
+                        {
+                            value:22,
+                            itemStyle: {
+                                normal: {
+                                    color: '#00b4ff'
+                                }
+                            }
+                        }
+
+                    ]
+                }
+            ]
+        }});
+        var conclusion8 = charts.init({id:774,container:"conclusion8",option:{
+            title: {
+                text: '南通市XXX公司'
+            },
+            series : [
+                {
+                    data:[
+                        {
+                            value:78
+                        },
+                        {
+                            value:22,
+                            itemStyle: {
+                                normal: {
+                                    color: '#00d8ff'
+                                }
+                            }
+                        }
+
+                    ]
+                }
+            ]
+        }});
+        var conclusion9 = charts.init({id:774,container:"conclusion9",option:{
+            title: {
+                text: '南通市XXX公司'
+            },
+            series : [
+                {
+                    data:[
+                        {
+                            value:83
+                        },
+                        {
+                            value:17,
+                            itemStyle: {
+                                normal: {
+                                    color: '#66c500'
+                                }
+                            }
+                        }
+
+                    ]
+                }
+            ]
+        }});
+        var conclusion10 = charts.init({id:774,container:"conclusion10",option:{
+            title: {
+                text: '南通市XXX公司'
+            },
+            series : [
+                {
+                    data:[
+                        {
+                            value:89
+                        },
+                        {
+                            value:11,
+                            itemStyle: {
+                                normal: {
+                                    color: '#a6dd00'
+                                }
+                            }
+                        }
+
+                    ]
+                }
+            ]
+        }});
+        var hyfbhgttz1 = charts.init({id:775,container:"hyfbhgttz1",option:{}})
+        var hyfbhgttz2 = charts.init({id:796,container:"hyfbhgttz2",option:{
+            series: [
+                {
+                    data:[
+                        {value:335, name:'以金融互助名义获取高收益'},
+                        {value:310, name:'注册信息不实'},
+                        {value:284, name:'投资养老公寓'},
+                        {value:335, name:'虚设股东'},
+                        {value:428, name:'项目非法挂牌'},
+                        {value:335, name:'销售境外基金、原始股'},
+                        {value:310, name:'假冒民营银行的名义'},
+                        {value:284, name:'资金用途不明'},
+                        {value:335, name:'高价回购收藏品'},
+                        {value:213, name:'提供借款担保名义'}
+                    ]
+                }
+            ]
+		}})
+
+        hyfbhgttz1.on("click",function(param){
+            //console.log(param.name)
+            if(param.name == "保险业"){
+                var hyfbhgttz2 = charts.init({id:796,container:"hyfbhgttz2",option:{
+                    series: [
+                        {
+                            data:[
+                                {value:335, name:'以金融互助名义获取高收益'},
+                                {value:310, name:'注册信息不实'},
+                                {value:335, name:'虚设股东'},
+                                {value:310, name:'假冒民营银行的名义'},
+                                {value:513, name:'提供借款担保名义'}
+                            ]
+                        }
+                    ]
+                }})
+			}else if(param.name == "房地产业"){
+                var hyfbhgttz2 = charts.init({id:796,container:"hyfbhgttz2",option:{
+                    series: [
+                        {
+                            data:[
+                                {value:335, name:'以金融互助名义获取高收益'},
+                                {value:310, name:'注册信息不实'},
+                                {value:284, name:'投资养老公寓'},
+                                {value:335, name:'虚设股东'},
+                                {value:428, name:'项目非法挂牌'},
+                                {value:284, name:'资金用途不明'},
+                                {value:335, name:'高价回购收藏品'},
+                                {value:213, name:'提供借款担保名义'}
+                            ]
+                        }
+                    ]
+                }})
+			}else if(param.name == "金融业"){
+                var hyfbhgttz2 = charts.init({id:796,container:"hyfbhgttz2",option:{
+                    series: [
+                        {
+                            data:[
+                                {value:335, name:'以金融互助名义获取高收益'},
+                                {value:310, name:'注册信息不实'},
+                                {value:335, name:'虚设股东'},
+                                {value:284, name:'资金用途不明'}
+                            ]
+                        }
+                    ]
+                }})
+			}else if(param.name == "制造业"){
+                var hyfbhgttz2 = charts.init({id:796,container:"hyfbhgttz2",option:{
+                    series: [
+                        {
+                            data:[
+                                {value:335, name:'以金融互助名义获取高收益'},
+                                {value:310, name:'注册信息不实'},
+                                {value:284, name:'投资养老公寓'},
+                                {value:335, name:'虚设股东'},
+                                {value:428, name:'项目非法挂牌'},
+                                {value:335, name:'销售境外基金、原始股'}
+                            ]
+                        }
+                    ]
+                }})
+			}else if(param.name == "建筑业"){
+                var hyfbhgttz2 = charts.init({id:796,container:"hyfbhgttz2",option:{
+                    series: [
+                        {
+                            data:[
+                                {value:335, name:'以金融互助名义获取高收益'},
+                                {value:310, name:'注册信息不实'},
+                                {value:284, name:'资金用途不明'},
+                            ]
+                        }
+                    ]
+                }})
+			}
+		})
+	})
+</script>
+</body>
+</html>
+
+
+
+
+

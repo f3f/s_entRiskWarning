@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>公安</title>
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+    <link rel="stylesheet" type="text/css" href="../css/score.css">
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+</head>
+<body>
+<div class="top cf">
+    <div class="top_l">
+        <p class="logo">
+            <img src="../images/logo.png">
+            企业风险研判平台
+        </p>
+        <div class="topNav">
+            <a href="index.html" class="active">企业风险预警</a>
+            <a href="score_quota.html">评分配置</a>
+        </div>
+    </div>
+    <div class="top_r">
+        <a href="login.html" class="topIcon3"><i></i>安全退出</a>
+        <a href="#" class="topIcon2"><i></i>修改密码</a>
+        <a href="#" class="topIcon1"><i></i>个人信息</a>
+    </div>
+</div>
+<ul class="leftBar leftBar2">
+    <li onclick="window.location='score_quota.html'">
+        <em></em>
+        <i class="leftBar2_1"></i>
+        <p>指标管理</p>
+    </li>
+    <li onclick="window.location='score_rule.html'">
+        <em></em>
+        <i class="leftBar2_2"></i>
+        <p>规则管理</p>
+    </li>
+    <li onclick="window.location='score_score.html'">
+        <em></em>
+        <i class="leftBar2_3"></i>
+        <p>评分模型</p>
+    </li>
+    <li onclick="window.location='score_level.html'">
+        <em></em>
+        <i class="leftBar2_4"></i>
+        <p>等级设置</p>
+    </li>
+    <li onclick="window.location='score_danger.html'">
+        <em></em>
+        <i class="leftBar2_5"></i>
+        <p>高危项定制</p>
+    </li>
+</ul>
+<div class="cont">
+    <div class="module cf">
+        <div class="formCondi">
+            模型名称<input type="text">
+        </div>
+        <div class="formIcon">
+            <input type="button" value="查询" class="scoreIcon1">
+            <input type="button" value="新增" class="scoreIcon2" onclick="window.location='score_addscore.html'">
+        </div>
+    </div>
+    <div class="moduleTable">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <th>序号</th>
+                <th>模型名称</th>
+                <th>计算公式</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>集资诈骗评分模型</td>
+                <td>（人员关系+项目关系+舆情关系+法院诉讼+资金流向）/5</td>
+                <td><a href="score_addscore.html" class="mtIcon1">修改</a> | <a href="#" class="mtIcon2">删除</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>票据诈骗模型</td>
+                <td>— —</td>
+                <td><a href="score_addscore.html" class="mtIcon1">修改</a> | <a href="#" class="mtIcon2">删除</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>虚假破产模型</td>
+                <td>— —</td>
+                <td><a href="score_addscore.html" class="mtIcon1">修改</a> | <a href="#" class="mtIcon2">删除</a></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>虚报注册资本模型</td>
+                <td>— —</td>
+                <td><a href="score_addscore.html" class="mtIcon1">修改</a> | <a href="#" class="mtIcon2">删除</a></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>妨害清算模型</td>
+                <td>— —</td>
+                <td><a href="score_addscore.html" class="mtIcon1">修改</a> | <a href="#" class="mtIcon2">删除</a></td>
+            </tr>
+        </table>
+        <div class="page">
+            <div class="page_l">共5条数据</div>
+            <div class="page_r">
+                <span>共1页，每页10条</span>
+                <div class="page_rA">
+                    <a href="javascript:void(0)" class="disable">&lt;&lt;</a>
+                    <a href="javascript:void(0)" class="disable">&lt;</a>
+                    <input type="text" value="1">
+                    <a href="javascript:void(0)" class="disable">&gt;</a>
+                    <a href="javascript:void(0)" class="disable">&gt;&gt;</a>
+                </div>
+                <input type="button" value="确定" class="pageIcon">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

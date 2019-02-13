@@ -1,0 +1,60 @@
+.formCondi{margin:5px 10px;float:left;color:#333;}
+.formCondi input{width:350px;padding:0 10px;background:#fff;border:1px solid #c2c2c2;border-radius:3px;height:30px;line-height:30px;margin-left:10px;}
+.formCondi select{width:370px;padding:0 10px;background:#fafafa;border:1px solid #c2c2c2;border-radius:3px;height:32px;line-height:32px;margin-left:10px;}
+.formCondiSamll .formCondi input{width:220px;}
+.formCondiSamll .formCondi select{width:240px;}
+.formIcon{margin:5px 10px;float:left;}
+.scoreIcon1{padding:0 30px;margin:0 5px;height:30px;line-height:30px;color:#fff;background:#e40000;background:linear-gradient(to bottom,#f60000 0%,#d20000 100%);border:1px solid #e40000;cursor: pointer;border-radius:4px;}
+.scoreIcon2{padding:0 30px;margin:0 5px;height:30px;line-height:30px;border:1px solid #d4d4d4;background: #fff;color:#5e5e5e;cursor: pointer;border-radius:4px;}
+.moduleTable{background:#fff;margin-top:10px;}
+.moduleTable table{width:100%;border:1px solid #e3e3e3;}
+.moduleTable.moduleTable2 table{border-right:none;border-bottom:none;}
+.moduleTable table th{height:42px;border-bottom:1px solid #e3e3e3;background:#f6f6f6;color:#000;padding:0 10px;}
+.moduleTable table td{text-align: center;color:#333;height:46px;padding:0 10px;}
+.moduleTable.moduleTable2 table th,.moduleTable.moduleTable2 table td{border-right:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3;}
+/*.moduleTable table td.tl{text-align: left;text-indent:100px;}*/
+.moduleTable table tr:nth-child(2n-1) td{background:#f6f6f6;}
+.moduleTable.moduleTable2 table tr:nth-child(2n-1) td{background:none;}
+a.mtIcon1{color:#fc1700;white-space:nowrap;}
+a.mtIcon2{color:#333;white-space:nowrap;}
+.page{padding:30px;line-height:34px;overflow:hidden;border:1px solid #e3e3e3;border-top:none;}
+.page_l{float:left;color:#fd1700;font-size:12px;}
+.page_r{float:right;}
+.page_r span{color:#666;margin-right:15px;}
+.page_rA{border-left:1px solid #c2c2c2;overflow:hidden;display:inline-block;vertical-align: middle;width:192px;}
+.page_rA a{color:#000;background:#fff;text-align:center;float:left;width:32px;height:32px;line-height:32px;border:1px solid #c2c2c2;border-left:none;}
+.page_rA input{width:58px;color:#000;background:#fff;text-align:center;float:left;height:32px;line-height:32px;border:1px solid #c2c2c2;border-left:none;}
+.page_rA a:hover{color:#fff;background:#c2c2c2;}
+.page_rA a.disable{background:#ccc;color:#bbb;cursor:default;}
+.pageIcon{height:34px;line-height:34px;margin-left:5px;border:1px solid #c2c2c2;color:#000;text-align:center;width:58px;background:#fff;vertical-align: middle;border-radius:4px;cursor:pointer;}
+.pageIcon:hover{color:#fff;background:#c2c2c2;}
+.addCont{padding:55px 0 100px 0;}
+.addContList{overflow:hidden;margin-top:15px;}
+.addContList_l{width:13%;padding-right:1%;float:left;text-align: right;line-height:34px;color:#000;height:34px;}
+.addContList_r{float:left;width:86%;}
+.addInp1{width:79%;padding:0 1%;border:1px solid#c2c2c2;border-radius:3px;height:32px;line-height:32px;background:#fff;}
+.addInp2{width:35%;padding:0 1%;border:1px solid#c2c2c2;border-radius:3px;height:32px;line-height:32px;background:#fff;}
+.addSel1{width:81%;padding:0 1%;border:1px solid#c2c2c2;border-radius:3px;height:34px;line-height:34px;background:#fafafa;}
+.addSel2{width:40%;padding:0 1%;border:1px solid#c2c2c2;border-radius:3px;height:34px;line-height:34px;background:#fafafa;margin-right:1%;}
+.addTextarea{width:79%;padding:10px 1%;border:1px solid#c2c2c2;border-radius:3px;background:#fafafa;height:80px;}
+.jsgsList{line-height:34px;overflow:hidden;width:81%;margin-bottom:15px;}
+.jsgsList.jsgsList2{width:100%;}
+.jsgsList:last-child{margin-bottom: 0;}
+.jsgsList label{float:left;width:13%;padding-right:1%;cursor: pointer;}
+.jsgsList_r{width:86%;float:left;overflow:hidden;}
+.jsgsList_r.jsgsList_r2{width:81%;float:none;}
+.jsgsList_r li{overflow:hidden;position:relative;margin-bottom:15px;padding-right:5%;}
+.jsgsList_r li:last-child{margin-bottom: 0;}
+.jsgsListIcon{position:absolute;right:0;top:0;width:28px;height:28px;border-radius:14px;text-align: center;font-weight:bold;cursor:pointer;}
+.jsgsListIcon.iconAdd{border:1px solid #e40000;color:#fff;background:#e40000;background:linear-gradient(to bottom,#f60606 0%,#d30606 100%);font-size:18px;}
+.jsgsListIcon.iconDel{border:1px solid #d5d5d5;color:#000;background:#fff;line-height:24px;}
+.jsgsListInp1{width:48%;padding:0 1%;border:1px solid#c2c2c2;border-radius:3px;height:32px;line-height:32px;background:#fff;}
+.jsgsListInp2{width:13%;padding:0 1%;border:1px solid#c2c2c2;border-radius:3px;height:32px;line-height:32px;background:#fff;}
+.jsgsListSel1{width:35%;padding:0 1%;border:1px solid#c2c2c2;border-radius:3px;height:34px;line-height:34px;background:#fafafa;margin-right:1%;}
+.jsgsListSel2{width:15%;padding:0 1%;border:1px solid#c2c2c2;border-radius:3px;height:34px;line-height:34px;background:#fafafa;margin-right:1%;}
+.moduleTable table td.cda1108{color:#da1108;}
+.moduleTable table td.cf58e09{color:#f58e09;}
+.moduleTable table td.cfc0{color:#fc0;}
+.moduleTable table td.c2ac201{color:#2ac201;}
+.jsgsList_r .disable{background:#ccc;color:#bbb;}
+.jsgsListIcon.disable{background:#ccc;color:#bbb;border:none;cursor: default;}
